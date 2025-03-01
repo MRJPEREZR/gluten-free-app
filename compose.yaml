@@ -1,0 +1,11 @@
+services:
+  front:
+    container_name: front
+    image: node:22.9.0
+    working_dir: /app
+    volumes:
+      - .:/app  # Bind volume to edit files locally
+      - /app/node_modules  # Avoid overwriting node_modules
+    ports:
+      - "5173:5173"  # Expose Vite's default port
+    command: ["sh", "-c", "npm install && npm run dev -- --host"]
